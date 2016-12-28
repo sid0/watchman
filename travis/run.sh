@@ -43,7 +43,7 @@ fi
 TMPDIR=$TMP
 export TMPDIR TMP
 
-if ! make integration ; then
+if ! "$TRAVIS_PYTHON" runtests.py tests/integration/test_subscribe.py ; then
   if test "$CIRCLECI" == "true" ; then
     # runtests.py already copied the logs to the artifact store
     exit 1
