@@ -493,12 +493,12 @@ class TestSubscribe(WatchmanTestCase.WatchmanTestCase):
                 }, data
             )
 
-        self.assertEqual(clock1, sub1_data[0]['since'])
-        self.assertEqual(clock2, sub2_data[0]['since'])
         self.assertFileListsEqual(
             ['a/d.txt', 'a/e.dat', 'c'], sub1_data[0]['files']
         )
         self.assertFileListsEqual(['a/d.txt'], sub2_data[0]['files'])
+        self.assertEqual(clock1, sub1_data[0]['since'])
+        self.assertEqual(clock2, sub2_data[0]['since'])
 
         # touch another file, make sure the updates come through again
         self.touchRelative(a_dir, 'f.dat')
